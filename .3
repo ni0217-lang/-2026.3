@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>釜山旅遊大J人專屬攻略</title>
+    <style>
+        :root {
+            --primary: #ff6b81;
+            --primary-light: #fff0f3;
+            --bg: #f7f9fc;
+            --text: #2f3542;
+            --gray: #747d8c;
+            --border: #dfe4ea;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 16px; }
+        .container { max-width: 650px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        h1 { font-size: 22px; text-align: center; color: var(--primary); margin-bottom: 4px; }
+        .subtitle { text-align: center; color: var(--gray); font-size: 14px; margin-bottom: 20px; }
+        
+        /* 分頁標籤樣式 */
+        .tabs { display: flex; gap: 6px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 8px; overflow-x: auto; }
+        .tab-btn { flex: 1; padding: 10px 12px; background: var(--bg); border: none; border-radius: 8px; font-size: 14px; font-weight: bold; color: var(--gray); cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+        .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(255, 107, 129, 0.3); }
+
+        /* 內容區塊 */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        h2 { font-size: 17px; border-left: 4px solid var(--primary); padding-left: 8px; margin-top: 20px; color: var(--text); }
+        h3 { font-size: 15px; color: #ff4757; margin-top: 14px; }
+        p, li { font-size: 14px; line-height: 1.6; }
+        ul { list-style: none; padding: 0; }
+        
+        /* 勾選清單項目 */
+        .checklist-item { display: flex; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--border); }
+        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 12px; margin-top: 2px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+        input[type="checkbox"]:checked + div span { text-decoration: line-through; color: #a4b0be; }
+        .item-title { font-weight: 500; }
+        .item-desc { font-size: 12px; color: var(--gray); display: block; margin-top: 2px; }
+
+        /* 警告與提示框 */
+        .warning-box { background: var(--primary-light); border: 1px solid var(--primary); padding: 14px; border-radius: 8px; margin-top: 16px; font-size: 13px; }
+        .warning-box ul { padding-left: 16px; list-style: disc; margin: 6px 0 0 0; }
+        
+        .tip-card { background: #f1f2f6; padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🎒 釜山旅遊大J人專屬攻略</h1>
+    <div class="subtitle">10/1 - 10/6 ｜ 溫差 11°C~23°C 智能清單</div>
+
+    <!-- 分頁按鈕 -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(event, 'tab1')">🎒 隨身行李</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab2')">🧳 託運清單</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab3')">🧥 穿搭指南</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab4')">⚠️ 當地禁忌</button>
+    </div>
+
+    <!-- 分頁 1：隨身行李 -->
+    <div id="tab1" class="tab-content active">
+        <h2>📄 重要證件與文件</h2>
+        <ul>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">護照正本</span><span class="item-desc">效期需滿 6 個月以上</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">回程機票與飯店憑證截圖</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">電子入境卡 QR Code</span></div></li>
+        </ul>
+
+        <h2>💳 貨幣與卡片</h2>
+        <ul>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">台灣實體信用卡 (準備 2 張以上)</span><span class="item-desc">建議 Visa / Master 各一張</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">T-money 交通卡</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">少量韓元現金</span><span class="item-desc">約 3~5 萬韓元即可</span></div></li>
+        </ul>
+
+        <h2>🔌 3C 電子產品 (必須隨身)</h2>
+        <ul>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">行動電源 (限隨身，最多 2 顆)</span><span class="item-desc">100Wh 以下 (10,000/20,000mAh)，容量標示須清晰，建議用絕緣膠帶貼住插孔或裝夾鏈袋</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">手機與充電線</span></div></li>
+        </ul>
+
+        <h2>💊 隨身常備藥品</h2>
+        <ul>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">個人慢性病藥、微量感冒藥、腸胃藥</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">OK 蹦</span><span class="item-desc">爬坡走到腳痛時極度需要！</span></div></li>
+        </ul>
+    </div>
+
+    <!-- 分頁 2：託運行李 -->
+    <div id="tab2" class="tab-content">
+        <h2>🔌 電器類</h2>
+        <ul>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">轉接頭 (Type C / F 歐規 4.8mm 雙圓孔)</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">台灣延長線</span><span class="item-desc">帶很多 3C 必備，接在轉接頭上最方便</span></div></li>
+        </ul>
+
+        <h2>🧴 盥洗與美妝 (韓國乾燥必備)</h2>
+        <ul>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">牙刷、牙膏、刮鬍刀 (必帶)</span><span class="item-desc">韓國飯店響應環保，全面不主動提供一次性備品</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">強效保濕乳液 / 精華液 / 護唇膏 / 護手霜</span><span class="item-desc">秋天比台灣乾燥非常多！</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">防曬乳與墨鏡</span></div></li>
+        </ul>
+
+        <h2>☂️ 其他實用工具</h2>
+        <ul>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">晴雨兩用折疊傘</span><span class="item-desc">港口城市偶有陣雨</span></div></li>
+            <li class="checklist-item"><input type="checkbox"><div><span class="item-title">折疊大旅行袋 / 托特包</span><span class="item-desc">塞在行李底部，回程擴充戰利品</span></div></li>
+        </ul>
+    </div>
+
+    <!-- 分頁 3：穿搭指南 -->
+    <div id="tab3" class="tab-content">
+        <h2>🌤️ 10月釜山「洋蔥式穿搭」解析</h2>
+        <p style="color:var(--gray); font-size:13px;">釜山秋天溫差高達 10°C 以上。中午像夏天，落山或海邊直逼寒冬。建議準備 3~4 套衣物即可！</p>
+
+        <div class="tip-card">
+            <h3>【內層】吸汗、好穿脫（應付中午微熱）</h3>
+            <p>短袖 T-shirt、薄長袖襯衫、大學 T 或薄針織衫。怕冷可備 1-2 件發熱衣。</p>
+        </div>
+
+        <div class="tip-card">
+            <h3>【外層】防風、防寒（應付早晚與海邊）</h3>
+            <p><strong>防風風衣、牛仔外套、皮革外套：必帶！</strong> 去海雲台藍線公園、廣安里或搭遊艇海風非常狂暴，外套必須防風。</p>
+            <p><strong>輕羽絨或厚大衣：</strong> 晚上體感降到 10°C 以下可備用。</p>
+        </div>
+
+        <div class="tip-card">
+            <h3>【下身與鞋子】耐走防滑最重要</h3>
+            <p><strong>下身：</strong> 牛仔褲、寬褲、長裙（長裙內可搭絲襪或刷毛內搭褲防風）。</p>
+            <p><strong>鞋子：</strong> <strong>一定要穿防滑、極好走的球鞋！</strong> 甘川洞、白淺灘文化村有大量陡坡與階梯，千萬不要穿高跟鞋或全新未磨合的鞋。</p>
+        </div>
+    </div>
+
+    <!-- 分頁 4：當地禁忌 -->
+    <div id="tab4" class="tab-content">
+        <h2>⚠️ 入境通關與旅遊禁忌</h2>
+
+        <div class="warning-box">
+            <strong>1. 藥品禁忌（千萬別帶！）</strong>
+            <ul>
+                <li>日本 EVE 止痛藥（含布洛芬等複方成分）在韓國屬於非法管制藥品，切勿攜帶入境，海關會受罰。</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <strong>2. 肉製品與新鮮蔬果禁忌</strong>
+            <ul>
+                <li>無論泡麵（含肉塊）、肉乾、蛋黃酥、炸雞或新鮮水果，一律禁止帶入韓國，海關查驗極嚴。</li>
+            </ul>
+        </div>
+
+        <div class="tip-card">
+            <h3>🗺️ 地圖導航與交通</h3>
+            <p><strong>🚫 別用 Google Map：</strong> 韓國不支援 Google 步行導航。請提早下載 <strong>Naver Map</strong> 或 <strong>Kakao Map</strong>。</p>
+            <p><strong>🚕 計程車與叫車：</strong> 釜山計程車便利且皆可刷卡。推薦下載 <strong>Kakao T App</strong> 綁定台灣信用卡直接叫車，免去語言不通的麻煩。</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function switchTab(evt, tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        evt.currentTarget.classList.add('active');
+    }
+</script>
+</body>
+</html>
